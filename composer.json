@@ -1,0 +1,15 @@
+{
+    "name": "loganyott/vagrant",
+    "type": "vagrant-config",
+    "authors": [
+        {
+            "name": "Logan Yott",
+            "email": "loganyott@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "loganyott/vagrant-installer": "dev-master"
+    }
+}
