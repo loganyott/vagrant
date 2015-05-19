@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # If true, then any SSH connections made will enable agent forwarding.
   config.ssh.forward_agent = true
 
-  config.vm.provision "shell", path: "vendor/loganyott/vagrant-installer/vagrant/provision.sh"
+  config.vm.provision "shell", path: "vendor/loganyott/vagrant/vagrant/provision.sh"
   config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
   config.vm.network "private_network", ip: "192.168.205.10"
   config.vm.provider "virtualbox" do |v|
