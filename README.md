@@ -14,6 +14,7 @@ To connect to your vagrant box, `vagrant ssh`.
 Any configuration changes made inside the box will persist until a `vagrant provision` or `vagrant destroy`.
 
 Shipped with box:
+
 1. Nginx
 2. PHP-FPM
 3. mySQL
