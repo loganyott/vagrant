@@ -10,6 +10,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "loganyott/vagrant-installer": "dev-master"
+        "loganyott/vagrant-installer": "~0.2"
     }
 }
