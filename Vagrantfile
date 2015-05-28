@@ -35,15 +35,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.provision "shell" do |s|
     # Specify provison script
     s.path = File.join(File.dirname(__FILE__), "vagrant/provision.sh")
+  end
 
-    # Add in arguments for required utilities
-    # TODO this in a better way
-    if pconfig.key?(:include)
-      includes = []
-      pconfig[:include].each do |include|
-        includes << include
+  if pconfig.key?(:include)
+    includes = pconfig[:include]
+    pconfig[:include].each do |include|
+      config.vm.provision "shell" do |s|
+        s.path = File.join(File.dirname(__FILE__), "vagrant/#{include}/#{include}.sh");
       end
-      s.args = includes
     end
 	end
 
@@ -79,7 +78,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.provider "virtualbox" do |v|
     # TODO Add this to a bin configurator
     # TODO Allow this to be set/read from outside of Vagrantfile
-		v.customize [ "modifyvm", :id, "--memory", "1024" ]
+    pconfig.key?(:memory) || pconfig[:memory] = "1024"
+		v.customize [ "modifyvm", :id, "--memory", pconfig[:memory] ]
 	end
 
   # TODO Add this to a bin configurator
