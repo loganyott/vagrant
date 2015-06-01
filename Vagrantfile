@@ -22,7 +22,7 @@ end
 
 # Load settings from vagrant.yml
 pconfig = "vagrant.yml"
-pconfig = File.exists?(pconfig) ? YAML.load_file(pconfig) : nil
+pconfig = File.exists?(pconfig) ? YAML.load_file(pconfig) : Hash.new
 
 # Configure Time
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
