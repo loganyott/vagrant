@@ -48,11 +48,6 @@ define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG_LOG', true );
 
-define( 'MULTISITE', false );
-/** Load Revel specific settings */
-$root = rtrim( dirname( __FILE__ ) , '/\\' ) ;
-require("$root/revel-settings.php");
-
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
