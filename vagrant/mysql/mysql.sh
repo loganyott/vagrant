@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt-get -y install mysql-server-5.5 mysql-server mysql-client php5-mysql
+sudo apt-get -yf install mysql-server mysql-client php5-mysql
 
 # Install MySQL
 echo 'mysql-server mysql-server/root_password password root' | sudo debconf-set-selections
