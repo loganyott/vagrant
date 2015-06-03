@@ -21,7 +21,7 @@ fi
 
 # Copy wp-config into place
 printf "Checking for wp-config.php...\n"
-if [ ! -f /srv/vagrant/wp-config.php ]; then
+if [ ! -f /srv/www/wp-config.php ]; then
   printf "wp-config.php not found. Copying into place...\n"
   sudo cp /var/vagrant/wordpress/wp-config.php /srv/www/wp-config.php
 else
