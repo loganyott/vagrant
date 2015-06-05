@@ -90,7 +90,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder pconfig[:docroot], "/srv/www", type: pconfig[:folder_type]
 
   # TODO Add this to a bin configurator
-  composer = JSON.parse(File.read("composer.json"))
+  composer = File.exists?("composer.json") ? JSON.parse(File.read("composer.json")) : Hash.new
   composer.key?("config") || composer["config"] = Hash.new
   composer["config"].key?("vendor-dir") || composer["config"]["vendor-dir"] = "vendor"
     config.vm.synced_folder File.join( composer["config"]["vendor-dir"], "loganyott/vagrant/vagrant" ), "/var/vagrant", type: pconfig[:folder_type]
