@@ -1,0 +1,39 @@
+---
+# Project configuration
+
+# Access site in docroot at hostname
+:hostname: site.local
+:docroot: "."
+
+#:aliases:
+#	- www.site.local
+
+# Include any packages needed from ./vagrant
+#:include:
+#	- :nginx
+#	- :mysql
+#	- :php-fpm
+#	- :composer
+#	- :wordpress
+
+
+# Vagrant configuration
+:box: ubuntu/trusty64
+
+:ssh:
+	# Forward ssh agent from host through guest
+	:forward_agent: true
+
+:network:
+	:forwarded_port:
+		:guest: 80
+		:host: 8080
+		:auto_correct: true
+	:ip: 192.168.205.10
+
+# How much memory in MB to allocate to box
+:memory: 1024
+
+# How to sync folder with guest
+# Possible values: nfs, rsync, smb
+:folder_type: nfs

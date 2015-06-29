@@ -5,7 +5,9 @@ This is a composer package for pulling in a default Vagrant configuration. Upon 
 # Getting Started
 
 1. `composer require "loganyott/vagrant"`
-2. `vagrant up`
+2. `cp ./vendor/loganyott/vagrant/vagrant.yml ./vagrant.yml`
+3. Modify `vagrant.yml` as needed
+4. `vagrant up`
 
 # Working with Vagrant
 
@@ -13,47 +15,53 @@ To connect to your vagrant box, `vagrant ssh`.
 
 Any configuration changes made inside the box will persist until a `vagrant provision` or `vagrant destroy`.
 
-Shipped with box:
-
-1. Nginx
-2. PHP-FPM
-3. mySQL
-4. WP-CLI
-
 # Defaults
+
+Following is a list of default configuration values followed by steps to change them.
 
 ## Structure
 
 ### Vendor directory
 `vendor`
 
-To change:
-  1. Open Vagrantfile
-  2. Find this line: `config.vm.provision "shell", path: "vendor/loganyott/vagrant/vagrant/provision.sh"`
-  3. Change `vendor` to your vendor directory
+1. Add this to your `composer.json`
+
+    ```json
+	{
+		"config": {
+			"vendor-dir": "DESIRED_VENDOR_DIR"
+  		}
+	}
 
 ### webroot
 `/srv/www/`
 
-To change:
-  Currently not configurable outside of `vendor`
+1. Currently not configurable outside of `vendor`
+
 
 ## Nginx
 
-### Nginx host
-`localhost`
+### Host
 
-To change:
-  Currently not configurable in Vagrantfile
+`site.local`
+
+1. Open `vagrant.yml`
+2. Change
+
+    ```yaml
+    :hostname: DESIRED_HOSTNAME
 
 ### Nginx port
+
 `8080`
 
-To change:
-  1. Open Vagrantfile
-  2. Find this line: `config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true`
-  3. Change `8080` to desired port.
-  4. `vagrant reload`
+1. Open `vagrant.yml`
+2. Change
+
+    ```yaml
+	:network:
+		:forwarded_port:
+			:host: YOUR_DESIRED_PORT
 
 *Note: Vagrant will try to correct port collisions automatically. Look for a line such as `==> default: Fixed port collision for 80 => 8080. Now on port 2200.` during a `vagrant up`. In this example, I can access my local through `localhost:2200`.*
 
@@ -62,23 +70,19 @@ To change:
 ### user
 `root`
 
-To change:
-  Currently not congiurable outside of `vendor`
+1. Currently not congiurable outside of `vendor`
 
 ### password
 `root`
 
-To change:
-  Currently not congiurable outside of `vendor`
+1. Currently not congiurable outside of `vendor`
 
 ### database
 `project`
 
-To change:
-  Currently not congiurable outside of `vendor`
+1. Currently not congiurable outside of `vendor`
 
 ### port
 `3306`
 
-To change:
-  Currently not congiurable outside of `vendor`
+1. Currently not congiurable outside of `vendor`

@@ -48,14 +48,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   pconfig.key?(:network) || pconfig[:network] = Hash.new
   network = pconfig[:network]
+    # TODO network should probably be able to handle more ports
     network.key?(:forwarded_port) || network[:forwarded_port] = Hash.new
     forwarded_port = network[:forwarded_port]
       forwarded_port.key?(:guest) || forwarded_port[:guest] = 80
       forwarded_port.key?(:host) || forwarded_port[:host] = 8080
       forwarded_port.key?(:auto_correct) || forwarded_port[:auto_correct] = true
-    network.key?(:ip) || network[:ip] = "192.168.205.10"  
+    network.key?(:ip) || network[:ip] = "192.168.205.10"
 
-	  config.vm.network "forwarded_port", 
+	  config.vm.network "forwarded_port",
       guest: forwarded_port[:guest],
       host: forwarded_port[:host],
       auto_correct: forwarded_port[:auto_correct]
