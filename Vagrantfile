@@ -97,13 +97,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   pconfig.key?(:docroot) || pconfig[:docroot] = ""
   env[:DOCROOT] = "/srv/www/#{pconfig[:docroot]}"
 
-  File.open( File.join( VROOT, ".env" ), "w+" ) do |f|
+  File.open( File.join( VROOT, ".env" ), "a+" ) { |f|
     contents = File.read(f);
     env.each do |k, v|
       line = "export #{k.upcase}=#{v}"
       contents.include?(line) || f.puts(line)
     end
-  end
+    # Try to explicitly close file so it is available for provisioner
+    f.close
+  }
 
 
   ## Provisioning
