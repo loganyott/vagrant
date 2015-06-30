@@ -19,6 +19,13 @@ else
   printf "WP-CLI autcompletion already installed.\n"
 fi
 
+printf "Checking for WP nginx conf...\n"
+if [ ! -f /etc/nginx/conf.d/wordpress.conf ]; then
+  printf "WP nginx conf not found. Installing...\n"
+  sudo cp /var/vagrant/wordpress/nginx/wordpress.conf /etc/nginx/conf.d/wordpress.conf
+fi
+printf "WordPress nginx conf installed.\n"
+
 # Copy wp-config into place
 printf "Checking for wp-config.php...\n"
 if [ ! -f /srv/www/wp-config.php ]; then
@@ -27,4 +34,5 @@ if [ ! -f /srv/www/wp-config.php ]; then
 else
   printf "wp-config.php already exists.\n"
 fi
+printf "wp-config.php installed.\n"
 
