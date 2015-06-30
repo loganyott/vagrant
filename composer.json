@@ -7,9 +7,7 @@
             "email": "loganyott@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
-        "loganyott/vagrant-installer": "~0.2"
+        "loganyott/vagrant-installer": "~0.3"
     }
 }
