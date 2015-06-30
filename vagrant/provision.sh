@@ -13,3 +13,5 @@ echo 'cd /srv/www' > /etc/profile.d/vagrant.sh
 if [ ! -f /etc/vim/vimrc.local ]; then
 	cp /var/vagrant/vimrc.local /etc/vim/vimrc.local
 fi
+
+cp .env /etc/profile.d/env.sh
