@@ -14,4 +14,6 @@ if [ ! -f /etc/vim/vimrc.local ]; then
 	cp /var/vagrant/vimrc.local /etc/vim/vimrc.local
 fi
 
-cp .env /etc/profile.d/env.sh
+if [ -f .env ]; then
+  cp .env /etc/profile.d/env.sh
+fi
