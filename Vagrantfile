@@ -81,7 +81,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     env[:VENDOR_DIR] = composer["config"]["vendor-dir"]
     config.vm.synced_folder File.join( composer["config"]["vendor-dir"], "loganyott/vagrant/vagrant" ), "/var/vagrant", type: pconfig[:folder_type]
 
-
   ## Providers
   config.vm.provider "virtualbox" do |v|
     # TODO Add this to a bin configurator
@@ -96,6 +95,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # TODO Add this to a bin configurator
   pconfig.key?(:docroot) || pconfig[:docroot] = ""
   env[:DOCROOT] = "/srv/www/#{pconfig[:docroot]}"
+
+  # MySQL
+  if pconfig.key?(:mysql)
+    mysql = pconfig[:mysql]
+    # Should def do this a better way
+    mysql.key?(:user) || mysql[:user] = "root"
+    mysql.key?(:pass) || mysql[:pass] = "root"
+    mysql.key?(:name) || mysql[:name] = "project"
+    mysql.each do |k, v|
+      env["mysql_#{k}"] = v
+    end
+  end
 
   File.open( File.join( VROOT, ".env" ), "a+" ) { |f|
     contents = File.read(f);
