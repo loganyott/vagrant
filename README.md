@@ -32,6 +32,7 @@ Following is a list of default configuration values followed by steps to change 
 			"vendor-dir": "DESIRED_VENDOR_DIR"
   		}
 	}
+  ```
 
 ### webroot
 `/srv/www/`
@@ -50,6 +51,7 @@ Following is a list of default configuration values followed by steps to change 
 
     ```yaml
     :hostname: DESIRED_HOSTNAME
+    ```
 
 ### Nginx port
 
@@ -62,6 +64,7 @@ Following is a list of default configuration values followed by steps to change 
 	:network:
 		:forwarded_port:
 			:host: YOUR_DESIRED_PORT
+    ```
 
 *Note: Vagrant will try to correct port collisions automatically. Look for a line such as `==> default: Fixed port collision for 80 => 8080. Now on port 2200.` during a `vagrant up`. In this example, I can access my local through `localhost:2200`.*
 
