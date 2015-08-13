@@ -3,7 +3,7 @@
 # Upgrade existing packages
 sudo apt-get -y update
 
-sudo apt-get -y install git vim nodejs
+sudo apt-get -y install git vim nodejs unzip
 
 if [ ! -f /etc/profile.d/vagrant.sh ]; then
 	touch /etc/profile.d/vagrant.sh
