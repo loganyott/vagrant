@@ -8,7 +8,7 @@ if [ ! -f /usr/local/bin/wp ]; then
   sudo mv wp-cli.phar /usr/local/bin/wp
 else
   printf "WP_CLI already installed.\n"
-fi 
+fi
 
 printf "Checking for WP-CLI autocompletion...\n"
 if [ ! -f /etc/bash_completion.d/wp-cli ]; then
@@ -18,13 +18,6 @@ if [ ! -f /etc/bash_completion.d/wp-cli ]; then
 else
   printf "WP-CLI autcompletion already installed.\n"
 fi
-
-printf "Checking for WP nginx conf...\n"
-if [ ! -f /etc/nginx/conf.d/wordpress.conf ]; then
-  printf "WP nginx conf not found. Installing...\n"
-  sudo cp /var/vagrant/wordpress/nginx/wordpress.conf /etc/nginx/conf.d/wordpress.conf
-fi
-printf "WordPress nginx conf installed.\n"
 
 # Copy wp-config into place
 printf "Checking for wp-config.php...\n"
